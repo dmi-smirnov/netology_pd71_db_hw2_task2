@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS employee (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS department (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  head INTEGER NOT NULL REFERENCES employee(id)
+);
+
+ALTER TABLE employee
+  ADD COLUMN department_id INTEGER REFERENCES department(id);
+
